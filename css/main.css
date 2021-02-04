@@ -34,7 +34,6 @@ body {
     white-space: nowrap;
     border-width: 0;
 }
-
 .container {
     width: min(90vw, 800px);
     margin: auto;
