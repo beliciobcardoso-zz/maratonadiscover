@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,900;1,200;1,300;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <title>div.Financeiro</title>
+</head>
+
+<body>
+    <header>
+        <img src="./assets/logo.svg" alt="logo Dev Financia">
+        <div class="profile">
+            <div id="profile_user">
+            </div>
+            <div class="signOut">
+                <a href="#" onclick="logout()">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="balance">
+            <h2 class="sr-only">Balanço</h2>
+            <div class="card">
+                <h3>
+                    <span>Entradas</span>
+                    <img src="./assets/income.svg" alt="Image de entradas">
+
+                </h3>
+                <p id="incomeDisplay" style="color:green"></p>
+            </div>
+            <div class="card">
+                <h3>
+                    <span>Saidas</span>
+                    <img src="./assets/expense.svg" alt="Imagem de saidas">
+                </h3>
+                <p id="expenseDisplay" style="color:red"></p>
+            </div>
+            <div class="card total">
+                <h3><span>Total</span>
+                    <img src="./assets/total.svg" alt="Imagem de Total">
+                </h3>
+                <p id="totalDisplay"></p>
+            </div>
+        </section>
+        <section id="transaction">
+            <h2 class="sr-only">Transações</h2>
+            <a href="#" onclick="modal()" class="button new">
+                <img id="plus" src="./assets/plus.svg" alt="Nova Transações">Nova
+                Transações</a>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div class="modal-overlay">
+        <div class="modal">
+            <div id="form">
+                <h2>Nova Transação</h2>
+                <form action="" onsubmit="Form.submit(event)">
+                    <div class="input-group">
+                        <label class="sr-only" for="description">Descrição</label>
+                        <input type="text" id="description" name="description" placeholder="Descrição" />
+                    </div>
+                    <div class="input-group">
+                        <label class="sr-only" for="amount">Valor</label>
+                        <input type="number" id="amount" name="amount" step="0.01" placeholder="0,00" />
+                        <small>Use o sinal - (negativo) para despesas e , (virgula) para casas decimais</small>
+                    </div>
+                    <div class="input-group">
+                        <label class="sr-only" for="date">Data</label>
+                        <input type="date" id="date" name="date" />
+                    </div>
+                    <div class="input-group actions">
+                        <a href="#" onclick="modal()" class="button cancel">cancelar</a>
+                        <button>Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-delete">
+        <div class="delete">
+            <h2>Deleta Transação</h2>
+            <small>Deseja deleta esta transação</small>
+            <div class="input-group actions">
+                <a href="#" onclick="confirmdelete()" class="button cancel">Cancelar</a>
+                <a href="#" onclick="Transaction.remove()" class="button confirm">Confirmar</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>div.Financeiro$</p>
+    </footer>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+    <script src="./js/firebase.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

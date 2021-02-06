@@ -1,6 +1,6 @@
 :root {
     --dark-blue: #363f5f;
-    --button-green: #3dd705;
+    --button-green: #12A454;
     --light-green: #78e407;
     --red: #e92929;
 }
@@ -34,6 +34,7 @@ body {
     white-space: nowrap;
     border-width: 0;
 }
+
 .container {
     width: min(90vw, 800px);
     margin: auto;
@@ -73,8 +74,14 @@ button:hover {
 }
 
 .button.new {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    max-width: 11rem;
     margin-bottom: .8rem;
+}
+
+.button.new img {
+    margin-right: 0.3rem;
 }
 
 .button.cancel {
@@ -92,17 +99,37 @@ button:hover {
     opacity: 1;
 }
 
+.button.confirm {
+    color: var(--button-green);
+    border: 2px solid;
+    border-radius: 0.25rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+}
+
+.button.confirm:hover {
+    opacity: 1;
+}
+
 /* **************************** Header */
 
 header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #2d4a22;
-    padding: 2rem 0 10rem;
-    text-align: center;
+    padding: 2rem 3rem 10rem;
 }
 
-#logo {
-    color: #fff;
-    font-weight: 100;
+#profile_user {
+    color: white;
+}
+
+.signOut {
+    text-align: end;
 }
 
 #balance {
@@ -153,6 +180,8 @@ header {
     overflow-x: auto;
 }
 
+/* **************************** table */
+
 #data-table {
     width: 100%;
     border-spacing: 0 0.5rem;
@@ -180,6 +209,10 @@ table th {
 table td {
     background-color: #fff;
     padding: 1rem 1rem;
+}
+
+table td img {
+    cursor: pointer;
 }
 
 tbody tr {
@@ -224,8 +257,38 @@ tbody tr:hover {
 .modal {
     background-color: #f0f2f5;
     padding: 2.4rem;
-
 }
+
+.modal-delete {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-delete.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.delete {
+    width: 25rem;
+    background-color: #f0f2f5;
+    padding: 2.4rem;
+}
+
+.delete h2 {
+    margin-top: 0;
+}
+
+.delete small {}
+
 
 /* *************************** Form */
 

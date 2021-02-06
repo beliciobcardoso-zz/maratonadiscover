@@ -5,6 +5,13 @@ function modal() {
         Form.clearFlields()
 }
 
+function confirmdelete() {
+    document.querySelector('.modal-delete')
+        .classList.toggle('active')
+        ,            // limpar fomulario
+        Form.clearFlields()
+}
+
 const Storage = {
 
     get() {
@@ -24,6 +31,8 @@ const Transaction = {
     },
     remove(index) {
         Transaction.all.splice(index, 1)
+        // fechar o modal ao deleta
+        confirmdelete()
         APP.reload()
     },
     incomes() {
@@ -66,7 +75,7 @@ const DOM = {
         <td class="description">${transaction.description}</td>
         <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
-        <td><img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover Transações"></td>
+        <td><img onclick="confirmdelete(${index})" src="./assets/minus.svg" alt="Remover Transações"></td>
         `
         return td
     },
@@ -85,6 +94,7 @@ const DOM = {
             document.querySelector('.card.total').classList.add('negative')
         }
     },
+
     clearTransaction() {
         DOM.transactionContainer.innerHTML = ""
     }
@@ -102,9 +112,9 @@ const Utils = {
 
         return signal + value
     },
-    formatAmount(amount) {
-        amount = Number(amount) * 100
-        return amount
+    formatAmount(value) {
+        value = value * 100
+        return Math.round(value)
     },
     formatDate(date) {
         const splitteDate = date.split("-")
@@ -176,4 +186,22 @@ const APP = {
 
 APP.init()
 
-console.log()
+firebase.auth().onAuthStateChanged(user => {
+    if (user == null) {
+        // User is signed in.
+        window.location.href = "./index.html"
+    } else {
+        var email = user.email
+        document.querySelector("#profile_user").innerHTML = `<p>${email}</p>`
+    }
+});
+
+function logout() {
+    firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+    }).catch((error) => {
+        // An error happened.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+    });
+}
