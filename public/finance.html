@@ -14,7 +14,9 @@
 
 <body>
     <header>
-        <img src="./assets/logo.svg" alt="logo Dev Financia">
+        <div class="logo">
+            <img src="./assets/logo.svg" alt="logo Dev Financia">
+        </div>
         <div class="profile">
             <div id="profile_user">
             </div>
@@ -52,8 +54,9 @@
         <section id="transaction">
             <h2 class="sr-only">Transações</h2>
             <a href="#" onclick="modal()" class="button new">
-                <img id="plus" src="./assets/plus.svg" alt="Nova Transações">Nova
-                Transações</a>
+                <img src="./assets/plus.svg" alt="Nova Transações">
+                Nova Transações
+            </a>
             <table id="data-table">
                 <thead>
                     <tr>
@@ -98,8 +101,8 @@
 
     <div class="modal-delete">
         <div class="delete">
-            <h2>Deleta Transação</h2>
-            <small>Deseja deleta esta transação</small>
+            <h2>Deletar Transação</h2>
+            <small>Deseja excluir esta transação</small>
             <div class="input-group actions">
                 <a href="#" onclick="confirmdelete()" class="button cancel">Cancelar</a>
                 <a href="#" onclick="Transaction.remove()" class="button confirm">Confirmar</a>

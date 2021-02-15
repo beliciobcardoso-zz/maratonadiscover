@@ -52,10 +52,12 @@ h2 {
 a {
     color: var(--button-green);
     text-decoration: none;
+    opacity: 1;
 }
 
 a:hover {
     color: var(--light-green);
+    opacity: .5;
 }
 
 button {
@@ -281,14 +283,12 @@ tbody tr:hover {
     width: 25rem;
     background-color: #f0f2f5;
     padding: 2.4rem;
+    text-align: center;
 }
 
 .delete h2 {
     margin-top: 0;
 }
-
-.delete small {}
-
 
 /* *************************** Form */
 
@@ -337,6 +337,13 @@ footer {
 @media (min-width: 750px) {
     html {
         font-size: 87.5%;
+    }
+
+    .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-left: 15rem;
     }
 
     #balance {
